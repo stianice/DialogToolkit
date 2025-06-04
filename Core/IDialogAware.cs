@@ -1,3 +1,5 @@
+using System.Windows.Threading;
+
 namespace Mvvm.DialogToolkit.Dialogs;
 
 /// <summary>
@@ -27,4 +29,6 @@ public interface IDialogAware
     /// invoke the close of the Dialog.
     /// </summary>
     DialogCloseListener RequestClose { get; }
+
+    Dispatcher Dispatcher { get; }
 }

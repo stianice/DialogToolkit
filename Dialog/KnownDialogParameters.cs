@@ -1,4 +1,4 @@
-﻿namespace PrismMvvm.DialogToolkit.Dialogs;
+﻿namespace Mvvm.DialogToolkit.Dialogs;
 
 /// <summary>
 /// Provides Dialog Parameter Keys for well known paramotors used by the <see cref="IDialogService"/>

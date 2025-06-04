@@ -1,5 +1,3 @@
-using PrismMvvm.DialogToolkit.Dialogs;
-
 namespace Mvvm.DialogToolkit.Dialogs
 {
     /// <summary>

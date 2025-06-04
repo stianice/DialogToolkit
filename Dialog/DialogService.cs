@@ -1,7 +1,6 @@
 using System.ComponentModel;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
-using PrismMvvm.DialogToolkit.Dialogs;
 
 namespace Mvvm.DialogToolkit.Dialogs
 {
@@ -95,12 +94,17 @@ namespace Mvvm.DialogToolkit.Dialogs
             if (content is not FrameworkElement dialogContent)
                 throw new NullReferenceException("A dialog's content must be a FrameworkElement");
 
-            if (!(dialogContent.DataContext is IDialogAware viewModel))
+            if (dialogContent.DataContext is not IDialogAware viewModel)
                 throw new NullReferenceException(
                     "A dialog's ViewModel must implement the IDialogAware interface"
                 );
 
             ConfigureDialogWindowProperties(window, dialogContent, viewModel);
+
+            if (dialogContent.Dispatcher is not null)
+            {
+                DialogUtilities.InitializeDispatcher(viewModel, dialogContent.Dispatcher);
+            }
 
             viewModel.OnDialogOpened(parameters);
         }
