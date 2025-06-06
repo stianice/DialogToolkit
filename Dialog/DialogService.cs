@@ -101,11 +101,6 @@ namespace Mvvm.DialogToolkit.Dialogs
 
             ConfigureDialogWindowProperties(window, dialogContent, viewModel);
 
-            if (dialogContent.Dispatcher is not null)
-            {
-                DialogUtilities.InitializeDispatcher(viewModel, dialogContent.Dispatcher);
-            }
-
             viewModel.OnDialogOpened(parameters);
         }
 
