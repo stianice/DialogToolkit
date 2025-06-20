@@ -6,7 +6,6 @@ namespace Mvvm.DialogToolkit.Dialogs;
 /// <summary>
 /// Provides a container for one or more Callbacks which may target specific Error Handling or Delegates to invoke on the successful close of the Dialog
 /// </summary>
-#nullable enable
 public readonly struct DialogCallback
 {
     private readonly bool _empty = false;
@@ -57,7 +56,7 @@ public readonly struct DialogCallback
         }
         else if (_callbacks.Any())
         {
-            foreach (MulticastDelegate callback in _callbacks)
+            foreach (var callback in _callbacks)
             {
                 await Process(callback, result);
             }
@@ -67,13 +66,21 @@ public readonly struct DialogCallback
     private static async Task Process(MulticastDelegate @delegate, IDialogResult result)
     {
         if (@delegate is Action action)
+        {
             action();
+        }
         else if (@delegate is Action<IDialogResult> actionResult)
+        {
             actionResult(result);
+        }
         else if (@delegate is Func<Task> func)
+        {
             await func();
+        }
         else if (@delegate is Func<IDialogResult, Task> funcResult)
+        {
             await funcResult(result);
+        }
     }
 
     /// <summary>

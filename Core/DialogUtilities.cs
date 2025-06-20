@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
-using System.Windows.Threading;
 
 namespace Mvvm.DialogToolkit.Dialogs;
 
@@ -75,7 +74,9 @@ public static class DialogUtilities
 
         var baseType = type.BaseType;
         if (baseType is null || baseType == typeof(object))
+        {
             throw new DialogException(DialogException.UnableToSetTheDialogCloseListener);
+        }
 
         return GetListenerSetter(dialogAware, baseType);
     }

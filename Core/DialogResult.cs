@@ -1,7 +1,4 @@
-﻿using System;
-
-#nullable enable
-namespace Mvvm.DialogToolkit.Dialogs;
+﻿namespace Mvvm.DialogToolkit.Dialogs;
 
 /// <summary>
 /// An <see cref="IDialogResult"/> that contains <see cref="IDialogParameters"/> from the dialog

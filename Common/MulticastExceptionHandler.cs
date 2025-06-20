@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿namespace Mvvm.DialogToolkit.Common;
 
-namespace Mvvm.DialogToolkit.Common;
-
-#nullable enable
 /// <summary>
 /// Provides a wrapper for managing multicast delegates for handling specific errors
 /// </summary>
@@ -58,7 +53,9 @@ public readonly struct MulticastExceptionHandler
         var multicastDelegate = GetDelegate(exception.GetType());
 
         if (multicastDelegate is null)
+        {
             return;
+        }
 
         // Get Invoke() method of the delegate
         var invokeMethod =
@@ -102,9 +99,13 @@ public readonly struct MulticastExceptionHandler
     private MulticastDelegate? GetDelegate(Type type)
     {
         if (_handlers.ContainsKey(type))
+        {
             return _handlers[type];
+        }
         else if (type.BaseType is not null)
+        {
             return GetDelegate(type.BaseType);
+        }
 
         return null;
     }

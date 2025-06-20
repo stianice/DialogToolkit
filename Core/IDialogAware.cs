@@ -1,5 +1,3 @@
-using System.Windows.Threading;
-
 namespace Mvvm.DialogToolkit.Dialogs;
 
 /// <summary>

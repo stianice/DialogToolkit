@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Mvvm.DialogToolkit.Dialogs;
+﻿namespace Mvvm.DialogToolkit.Dialogs;
 
 /// <summary>
 /// Represents errors that may occur within the <see cref="IDialogService"/>.

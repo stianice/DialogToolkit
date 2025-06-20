@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace Mvvm.DialogToolkit.Dialogs;
+﻿namespace Mvvm.DialogToolkit.Dialogs;
 
 /// <summary>
 /// Provides compatibility Extensions for the <see cref="IDialogService"/>
@@ -127,11 +124,17 @@ public static class IDialogServiceExtensions
                     result.Exception is DialogException de
                     && de.Message == DialogException.CanCloseIsFalse
                 )
+                {
                     return;
+                }
                 else if (result.Exception is not null)
+                {
                     tcs.TrySetException(result.Exception);
+                }
                 else
+                {
                     tcs.TrySetResult(result);
+                }
             })
         );
         return tcs.Task;
